@@ -1,0 +1,280 @@
+Notas de la sustentación:
+
+- Fallas de documentación presentada README.md
+
+
+El siguiente es el DER creado en Mermaid
+
+erDiagram
+	direction TB
+	USUARIO {
+		int id_usuario PK ""  
+		string nombre_usuario UK ""  
+		string correo UK ""  
+		string hash_contrasena  ""  
+		string nombre  ""  
+		string apellido  ""  
+		int id_rol FK ""  
+		boolean esta_activo  ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	REGISTRO_AUDITORIA {
+		int id_registro PK ""  
+		int id_usuario FK ""  
+		string tipo_accion  ""  
+		string tipo_entidad  ""  
+		int id_entidad  ""  
+		text valores_antiguos  ""  
+		text valores_nuevos  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	ASIGNACION {
+		int id_asignacion PK ""  
+		int id_grupo FK ""  
+		int id_salon FK ""  
+		int id_profesor FK ""  
+		int id_periodo_academico FK ""  
+		int id_franja_horaria FK ""  
+		int id_tipo_asignacion FK ""  
+		int id_usuario_creador FK ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	ROL {
+		int id_rol PK ""  
+		string nombre_rol UK ""  
+		string descripcion  ""  
+	}
+
+	PROFESOR {
+		int id_profesor PK ""  
+		int id_usuario FK ""  
+		string numero_identificacion UK ""  
+		text biografia  ""  
+		text cualificaciones  ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	ESTUDIANTE {
+		int id_estudiante PK ""  
+		int id_usuario FK ""  
+		string numero_identificacion UK ""  
+		string correo_institucional UK ""  
+		string telefono  ""  
+		date fecha_nacimiento  ""  
+		text direccion  ""  
+		string contacto_emergencia  ""  
+		string telefono_emergencia  ""  
+		boolean esta_activo  ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	OCUPACION_PROFESOR {
+		int id_ocupacion PK ""  
+		int id_profesor FK ""  
+		int id_periodo_academico FK ""  
+		int dia_semana  ""  
+		time hora_inicio  ""  
+		time hora_fin  ""  
+		string motivo  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	ESPECIALIDAD_PROFESOR {
+		int id_especialidad PK ""  
+		int id_profesor FK ""  
+		string nombre_especialidad  ""  
+		string nivel_competencia  ""  
+	}
+
+	RESTRICCION {
+		int id_restriccion PK ""  
+		string tipo_restriccion  ""  
+		int id_recurso  ""  
+		string tipo_recurso  ""  
+		text descripcion_restriccion  ""  
+		datetime valido_desde  ""  
+		datetime valido_hasta  ""  
+		boolean esta_activo  ""  
+	}
+
+	ESTUDIANTE_GRUPO {
+		int id_estudiante_grupo PK ""  
+		int id_estudiante FK ""  
+		int id_grupo FK ""  
+		int id_periodo_academico FK ""  
+		date fecha_inscripcion  ""  
+		date fecha_retiro  ""  
+		string estado_inscripcion  ""  
+		boolean esta_activo  ""  
+	}
+
+	OCUPACION_ESTUDIANTE {
+		int id_ocupacion PK ""  
+		int id_estudiante FK ""  
+		int id_periodo_academico FK ""  
+		int dia_semana  ""  
+		time hora_inicio  ""  
+		time hora_fin  ""  
+		string motivo  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	GRUPO_ESTUDIANTE {
+		int id_grupo PK ""  
+		string nombre_grupo UK ""  
+		string codigo_grupo UK ""  
+		int id_nivel_academico FK ""  
+		int cantidad_estudiantes  ""  
+		text requisitos_especiales  ""  
+		boolean esta_activo  ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	PERIODO_ACADEMICO {
+		int id_periodo PK ""  
+		string nombre_periodo UK ""  
+		string codigo_periodo UK ""  
+		date fecha_inicio  ""  
+		date fecha_fin  ""  
+		boolean esta_activo  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	NIVEL_ACADEMICO {
+		int id_nivel PK ""  
+		string nombre_nivel UK ""  
+		int orden_nivel  ""  
+	}
+
+	CARACTERISTICA_GRUPO {
+		int id_caracteristica PK ""  
+		int id_grupo FK ""  
+		string tipo_caracteristica  ""  
+		string valor_caracteristica  ""  
+	}
+
+	OCUPACION_GRUPO {
+		int id_ocupacion PK ""  
+		int id_grupo FK ""  
+		int id_periodo_academico FK ""  
+		int dia_semana  ""  
+		time hora_inicio  ""  
+		time hora_fin  ""  
+		string motivo  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	SALON {
+		int id_salon PK ""  
+		string codigo_salon UK ""  
+		string nombre_salon  ""  
+		int id_edificio FK ""  
+		int numero_piso  ""  
+		int capacidad  ""  
+		text descripcion_ubicacion  ""  
+		boolean esta_activo  ""  
+		datetime fecha_creacion  ""  
+		datetime fecha_actualizacion  ""  
+	}
+
+	OCUPACION_SALON {
+		int id_ocupacion PK ""  
+		int id_salon FK ""  
+		int id_periodo_academico FK ""  
+		int dia_semana  ""  
+		time hora_inicio  ""  
+		time hora_fin  ""  
+		string motivo  ""  
+		datetime fecha_creacion  ""  
+	}
+
+	RECURSO_SALON {
+		int id_recurso PK ""  
+		int id_salon FK ""  
+		int id_tipo_recurso FK ""  
+		int cantidad  ""  
+		text notas  ""  
+	}
+
+	EDIFICIO {
+		int id_edificio PK ""  
+		string nombre_edificio UK ""  
+		string codigo_edificio UK ""  
+		text direccion  ""  
+	}
+
+	FRANJA_HORARIA {
+		int id_franja_horaria PK ""  
+		int dia_semana  ""  
+		time hora_inicio  ""  
+		time hora_fin  ""  
+		int duracion_minutos  ""  
+	}
+
+	CONFLICTO {
+		int id_conflicto PK ""  
+		int id_asignacion FK ""  
+		string tipo_conflicto  ""  
+		text descripcion_conflicto  ""  
+		string severidad  ""  
+		boolean esta_resuelto  ""  
+		datetime detectado_en  ""  
+		datetime resuelto_en  ""  
+	}
+
+	TIPO_ASIGNACION {
+		int id_tipo_asignacion PK ""  
+		string nombre_tipo UK ""  
+		string descripcion  ""  
+	}
+
+	TIPO_RECURSO {
+		int id_tipo_recurso PK ""  
+		string nombre_recurso UK ""  
+		string descripcion  ""  
+	}
+
+	
+
+	USUARIO||--o{REGISTRO_AUDITORIA:"crea"
+	USUARIO||--o{ASIGNACION:"crea"
+	USUARIO}o--||ROL:"tiene"
+	USUARIO||--o{PROFESOR:"puede ser"
+	USUARIO||--o{ESTUDIANTE:"puede ser"
+	PROFESOR||--o{OCUPACION_PROFESOR:"tiene"
+	PROFESOR||--o{ESPECIALIDAD_PROFESOR:"tiene"
+	PROFESOR||--o{ASIGNACION:"imparte"
+	PROFESOR||--o{RESTRICCION:"sujeto a"
+	ESTUDIANTE||--o{ESTUDIANTE_GRUPO:"pertenece a"
+	ESTUDIANTE||--o{OCUPACION_ESTUDIANTE:"tiene"
+	ESTUDIANTE_GRUPO}o--||ESTUDIANTE:"vincula"
+	ESTUDIANTE_GRUPO}o--||GRUPO_ESTUDIANTE:"vincula"
+	ESTUDIANTE_GRUPO}o--||PERIODO_ACADEMICO:"en periodo"
+	GRUPO_ESTUDIANTE||--o{ESTUDIANTE_GRUPO:"contiene"
+	GRUPO_ESTUDIANTE||--o{ASIGNACION:"asignado a"
+	GRUPO_ESTUDIANTE}o--||NIVEL_ACADEMICO:"pertenece"
+	GRUPO_ESTUDIANTE||--o{CARACTERISTICA_GRUPO:"tiene"
+	GRUPO_ESTUDIANTE||--o{OCUPACION_GRUPO:"tiene"
+	SALON||--o{OCUPACION_SALON:"tiene"
+	SALON||--o{RECURSO_SALON:"contiene"
+	SALON||--o{ASIGNACION:"aloja"
+	SALON||--o{RESTRICCION:"sujeto a"
+	SALON}o--||EDIFICIO:"ubicado en"
+	ASIGNACION}o--||PERIODO_ACADEMICO:"programado en"
+	ASIGNACION}o--||FRANJA_HORARIA:"ocurre en"
+	ASIGNACION||--o{CONFLICTO:"puede tener"
+	ASIGNACION}o--||TIPO_ASIGNACION:"creado por"
+	PERIODO_ACADEMICO||--o{ASIGNACION:"contiene"
+	TIPO_RECURSO||--o{RECURSO_SALON:"categoriza"
+
+
+
+
